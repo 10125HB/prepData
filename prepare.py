@@ -12,7 +12,7 @@ def split_data(data: pd.DataFrame, last: int,
     age = data.age / data.age.max()
     age_column = ["age", ]
 
-    lob = pd.get_dummies(data.Lob)
+    lob = pd.get_dummies(data.LoB)
     lob_columns = [f"LoB{k}" for k in range(lob.shape[1])]
 
     inj_part = pd.get_dummies(data.inj_part)
