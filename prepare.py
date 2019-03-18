@@ -9,7 +9,7 @@ def split_data(data: pd.DataFrame, last: int,
     time_depended = [
         np.array(data[[f"Pay{k:02d}", f"Open{k:02d}"]]) for k in range(last)]
 
-    age = data.age.div(data.age.max())
+    age = data.age / data.age.max()
     age_column = ["age", ]
 
     lob = pd.get_dummies(data.Lob)
