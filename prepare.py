@@ -9,10 +9,8 @@ def split_data(data: pd.DataFrame, last: int,
     time_depended = [
         np.array(data[[f"Pay{k:02d}", f"Open{k:02d}"]]) for k in range(last)]
 
-    age_column = "age"
+    age_column = ["age",]
     age = data[["age", ]] / data.age.max()
-
-    print(age)
 
     lob = pd.get_dummies(data.LoB)
     lob_columns = [f"LoB{k}" for k in range(lob.shape[1])]
@@ -25,6 +23,6 @@ def split_data(data: pd.DataFrame, last: int,
 
     next_col = None
     if next_columns:
-        next_col = data[["fPay{last:02d}", "fOpen{last:02d}"]]
+        next_col = data[[f"Pay{last:02d}", f"Open{last:02d}"]]
 
     return [static, np.array(time_depended)], next_col
