@@ -26,4 +26,4 @@ def split_data(data: pd.DataFrame, last: int,
     if next_columns:
         next_col = data[[f"Pay{last:02d}", f"Open{last:02d}"]]
 
-    return [static.values, time_depended], next_col
+    return [static.values, time_depended], next_col.values
