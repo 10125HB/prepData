@@ -8,7 +8,8 @@ def split_data(data: pd.DataFrame, last: int,
 
     time_depended = [
         np.array(data[[f"Pay{k:02d}", f"Open{k:02d}"]]) for k in range(last)]
-
+    time_depended = np.swapaxes(np.array(time_depended), 0, 1)
+    
     age_column = ["age",]
     age = data[["age", ]] / data.age.max()
 
@@ -25,4 +26,4 @@ def split_data(data: pd.DataFrame, last: int,
     if next_columns:
         next_col = data[[f"Pay{last:02d}", f"Open{last:02d}"]]
 
-    return [static.values, np.array(time_depended).T], next_col
+    return [static.values, time_depended], next_col
